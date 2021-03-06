@@ -1,13 +1,10 @@
-var counter = 0;
-
-function printValue(divId, value) {
-  document.getElementById(divId).innerHTML = value;
-}
-printValue('counter', 0);
-
-document.getElementById('inc').addEventListener('click', increment);
-
-function increment() {
-  counter++;
-  printValue('counter', counter);
+function sum(n){
+    if(typeof n === 'undefined') return 'n is undefined';
+    if(typeof n === 'string') return 'not a number';
+    if(typeof n === 'boolean') return 'not a number';
+    var sum = 0;
+    for(var i=1;i<=n;i++){
+        sum+=i;
+    }
+    return sum;
 }
