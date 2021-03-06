@@ -1,4 +1,4 @@
-function getFibbonaci(n) {
+function getFibonacci(n) {
     let n1 = 0, n2 = 1, next;
     if (typeof n != 'number')
      return 'not allowed';
@@ -20,9 +20,9 @@ function getFibbonaci(n) {
         }
     }
 }
-console.log(getFibbonaci(2));
-console.log(getFibbonaci(5));
-console.log(getFibbonaci('Hello'));
-console.log(getFibbonaci(11));
+console.log(getFibonacci(2));
+console.log(getFibonacci(5));
+console.log(getFibonacci('Hello'));
+console.log(getFibonacci(11));
 
 
