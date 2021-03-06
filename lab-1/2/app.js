@@ -1,15 +1,25 @@
-document.getElementById('n').addEventListener('input ', inputSum);
+var counter = 0;
 
-function inputSum() {
-  var inputNumber = parseInt(document.getElementById('n').value);
-  sum(inputNumber);
+function printValue ( divId , value ){
+    document . getElementById ( divId ) . innerHTML = value ;
+}
+printValue ('counter', 0);
+
+document . getElementById ('inc') . addEventListener ('click', increment );
+
+function increment () {
+    if(counter>=0 && counter<10){
+        counter++;
+        printValue ('counter', counter );
+    }
 }
 
-function sum(n) {
-  if (typeof n === 'undefined ') return 'n is undefined ';
-  var sum = 0;
-  for (var i = 1; i <= n; i++) {
-    sum += i;
-  }
-  return sum;
+document . getElementById ('dec') . addEventListener ('click', decrement );
+
+
+function decrement () {
+    if(counter>0 && counter<=10) {
+        counter--;
+        printValue('counter', counter);
+    }
 }
