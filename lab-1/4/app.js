@@ -23,5 +23,6 @@ function getFibbonaci(n) {
 console.log(getFibbonaci(2));
 console.log(getFibbonaci(5));
 console.log(getFibbonaci('Hello'));
+console.log(getFibbonaci(11));
 
 
