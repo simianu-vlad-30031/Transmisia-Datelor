@@ -30,6 +30,7 @@
           <div class="user-row">
             <div class="user-name">{{ user.name }}</div>
             <div class="user-city"><i>{{ user.city }}</i></div>
+            <buton class="delete-btn" v-on:click="deleteUser(index)">Delete user</buton>
           </div>
         </li>
       </ul>
