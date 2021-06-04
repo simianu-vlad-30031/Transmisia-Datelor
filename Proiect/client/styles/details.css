@@ -4,12 +4,12 @@
     padding:1px;
     flex-wrap: wrap;
     flex-direction: row;
-    width:50%;
+    width:55%;
     margin: auto;
 }
 
 .label {
-    padding:20px;
+    padding:25px;
     flex:1;
     background-color:#fefefe;
 }
@@ -18,4 +18,8 @@
     padding: 20px;
     background-color: #aaa;
     flex:1;
+}
+body {
+    background-color: LemonChiffon;
+    background-image: url("download1.jpg");
 }

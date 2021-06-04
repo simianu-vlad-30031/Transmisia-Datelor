@@ -24,15 +24,14 @@
     <ul class="user-list" v-if="cars.length > 0">
       <li>
         <div class="user-row-header">
-          <div class="user-name">Name</div>
-          <div class="user-city">Price</div>
+          <div class="user-name">Product</div>
         </div>
       </li>
 
       <li v-for="car in cars">
-        <div class="">
+        <div class="user-row">
           <a :href="'details.html?id='+car.id">{{ car.name }}</a>
-          <span class=""><i>{{ car.price }}</i></span>
+          <div class=""><i>{{ car.price }}</i></div>
           <button v-on:click="deleteCar(car.id)">Delete</button>
           <a :href="'update.html?id='+car.id" target="_self">Update</a>
         </div>
