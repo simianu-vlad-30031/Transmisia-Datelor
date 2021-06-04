@@ -21,14 +21,15 @@ body {
 
 .title {
   background-color: #FF7F50;
-  padding: 15px 15px 5px 10px;
-  color: white;
-  font-size: 25px;
+  padding: 10px 13px 0px 0px;
+  color: black;
+  font-size: 45px;
   text-align: center;
+  background: rgba(200, 54, 54, 0);
 }
 
 .user-row-header {
-  padding: 20px 0px 5px 0px;
+  padding: 20px 20px 5px 0px;
   text-align: left;
   font-weight: bold;
   border-bottom: 3px solid #0053c0;
