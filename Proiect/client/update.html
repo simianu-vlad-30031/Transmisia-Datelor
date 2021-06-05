@@ -7,8 +7,10 @@
         <a href="index.html">Home</a>
         <div id="update">
             Actualizare componenta cu id-ul: {{ id }} <br>
-            <input type="text" v-model="car.name">
-            <button  v-on:click="update(car.id)">Update</button>
+            <input type="text" v-model="component.name">
+            <input type="text" v-model="component.price">
+            <input type="text" v-model="component.Type">
+            <button  v-on:click="update(component.id)">Update</button>
 
             <p>{{message}}</p>
 

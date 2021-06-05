@@ -1,84 +1,106 @@
 var api = require('./src/api.js').app;
 const fs = require('fs');
-const carsFilepath = './src/components.json';
+const componentsFilepath = './src/components.json';
 
 api.get('/', function (request, response) {
   response.json('NodeJS REST API');
 });
 
-api.get('/cars', function (request, response) {
-  response.json(getCars());
+api.get('/components', function (request, response) {
+  response.json(getcomponents());
 });
 
-api.get('/cars/:id', function (request, response) {
-  let car = getCarById(request.params.id);
-  if (car) response.json(car);
+api.get('/components/:id', function (request, response) {
+  let component = getcomponentById(request.params.id);
+  if (component) response.json(component);
   response.json('not found');
 });
 
-api.put('/cars', function (request, response) {
-  saveCar(request.body);
+api.put('/components', function (request, response) {
+  savecomponent(request.body);
   response.json('User was saved succesfully');
 });
 
-api.post('/cars', function (request, response) {
-  // in request o sa-mi vina un obiect de tip car care o sa aiba un anumit id
-  console.log(request.body);//un obiect de tipul car actualizat pe client
-  // citim cars din fisier pe baza id-ului primit de la client
-  // cautam daca exista indexul de pe request.body
-  // daca exista actualizam parametrii acestui produs/item
-  // salvam in fisier produsele actualizate
+api.post('/components', function (request, response) {
+  let component = request.body;
+  let components = getcomponents();
+  for (let i = 0; i < components.length; i++) {
+    if (components[i].id === component.id) {
+      components[i] = component;
+    }
+  }
+
+  try {
+    fs.writeFileSync(componentsFilepath, JSON.stringify(components));
+  } catch (err) {
+    console.error(err);
+  }
   response.json('The component was saved succesfully');
 });
 
-api.delete('/cars/:index', function (request, response) {
-  // delete din fisier pe baza unui id
-  cars.splice(request.params.index, 1);
-  response.json('User with index ' + request.params.index + ' was deleted');
+api.delete('/components/:index', function (request, response) {
+  let components = getcomponents();
+
+  components.splice(findInArray(request.params.index), 1);
+
+  try {
+    fs.writeFileSync(componentsFilepath, JSON.stringify(components));
+  } catch (err) {
+    console.error(err);
+  }
+  response.json('component with id ' + request.params.index + ' was deleted');
 });
 
 api.listen(3000, function () {
   console.log('Server running @ localhost:3000');
 });
 
-function getCars() {
-  let cars = [];
+function getcomponents() {
+  let components = [];
   try {
-    cars = JSON.parse(fs.readFileSync(carsFilepath, 'utf8'));
+    components = JSON.parse(fs.readFileSync(componentsFilepath, 'utf8'));
   } catch (err) {
     console.error(err);
     return false;
   }
-  return cars;
+  return components;
 }
 
-function saveCar(car) {
-  let cars = getCars();// citire json din fisier
-  let maxId = getMaxId(cars);  // get maximum id form cars array
-  car.id = maxId+1;// generare id unic
-  cars.push(car);// adaugare masina noua in array
+function savecomponent(component) {
+  let components = getcomponents();// citire json din fisier
+  let maxId = getMaxId(components);  // get maximum id form components array
+  component.id = maxId+1;// generare id unic
+  components.push(component);// adaugare masina noua in array
   try {
-    fs.writeFileSync(carsFilepath, JSON.stringify(cars));// salvare json array in fisier
+    fs.writeFileSync(componentsFilepath, JSON.stringify(components));// salvare json array in fisier
   } catch (err) {
     console.error(err)
   }
 }
 
-function getMaxId(cars) {
+function getMaxId(components) {
   let max = 0;
-  for (var i=0; i<cars.length;i++) {
-    if(max < cars[i].id) {
-      max = cars[i].id;
+  for (var i=0; i<components.length;i++) {
+    if(max < components[i].id) {
+      max = components[i].id;
     }
   }
   return max;
 }
 
-function getCarById(id){
-  let cars = getCars();// citire json din fisier
-  let selectedCar = null;
-  for(var i=0; i<cars.length; i++) {
-    if(id == cars[i].id) selectedCar = cars[i];
+function getcomponentById(id){
+  let components = getcomponents();// citire json din fisier
+  let selectedcomponent = null;
+  for(var i=0; i<components.length; i++) {
+    if(id == components[i].id) selectedcomponent = components[i];
   }
-  return selectedCar;
+  return selectedcomponent;
+}
+
+function findIdInArray(id) {
+  let components = getcomponents();
+  for (var i = 0; i < components.length; i++) {
+    if (id == components[i].id) return i;
+  }
+  return -1;
 }

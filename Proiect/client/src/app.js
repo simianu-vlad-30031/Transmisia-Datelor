@@ -2,19 +2,19 @@ function run() {
   let indexComponent = new Vue({
     el: '#app',
     data: {
-      cars: [],
+      components: [],
       usersService: null,
       message: ''
     },
     created: function () {
       this.usersService = users();
-      this.usersService.get().then(response => (this.cars = response.data));
+      this.usersService.get().then(response => (this.components = response.data));
     },
     methods: {
-      deleteCar: function(id) {
-        console.log('HTTP DELETE spre backend, car: '+id);
+      deletecomponent: function(id) {
+        console.log('HTTP DELETE spre backend, component: '+id);
         this.usersService.remove(id).then(response => {
-          this.usersService.get().then(response => (this.cars = response.data));  
+          this.usersService.get().then(response => (this.components = response.data));
         });
       },
     }

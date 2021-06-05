@@ -5594,7 +5594,7 @@
   var isEnumeratedAttr = makeMap('contenteditable,draggable,spellcheck');
 
   var isValidContentEditableValue = makeMap(
-    'events,caret,typing,plaintext-only'
+    'events,componentet,typing,plaintext-only'
   );
 
   var convertEnumeratedValue = function (key, value) {
@@ -7310,7 +7310,7 @@
     rawName,
     value,
     arg,
-    isDynamicArg,
+    isDynamicomponentg,
     modifiers,
     range
   ) {
@@ -7321,7 +7321,7 @@
           rawName: rawName,
           value: value,
           arg: arg,
-          isDynamicArg: isDynamicArg,
+          isDynamicomponentg: isDynamicomponentg,
           modifiers: modifiers
         },
         range
@@ -9651,7 +9651,7 @@
 
   // Regular Expressions for parsing tags and attributes
   var attribute = /^\s*([^\s"'<>\/=]+)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
-  var dynamicArgAttribute = /^\s*((?:v-[\w-]+:|@|:|#)\[[^=]+\][^\s"'<>\/=]*)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
+  var dynamicomponentgAttribute = /^\s*((?:v-[\w-]+:|@|:|#)\[[^=]+\][^\s"'<>\/=]*)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
   var ncname = '[a-zA-Z_][\\-\\.0-9_a-zA-Z' + unicodeRegExp.source + ']*';
   var qnameCapture = '((?:' + ncname + '\\:)?' + ncname + ')';
   var startTagOpen = new RegExp('^<' + qnameCapture);
@@ -9851,7 +9851,7 @@
         var end, attr;
         while (
           !(end = html.match(startTagClose)) &&
-          (attr = html.match(dynamicArgAttribute) || html.match(attribute))
+          (attr = html.match(dynamicomponentgAttribute) || html.match(attribute))
         ) {
           attr.start = index;
           advance(attr[0].length);
@@ -9978,7 +9978,7 @@
   var forAliasRE = /([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/;
   var forIteratorRE = /,([^,\}\]]*)(?:,([^,\}\]]*))?$/;
   var stripParensRE = /^\(|\)$/g;
-  var dynamicArgRE = /^\[.*\]$/;
+  var dynamicomponentgRE = /^\[.*\]$/;
 
   var argRE = /:(.*)$/;
   var bindRE = /^:|^\.|^v-bind:/;
@@ -10686,7 +10686,7 @@
         warn$2('v-slot shorthand syntax requires a slot name.', binding);
       }
     }
-    return dynamicArgRE.test(name)
+    return dynamicomponentgRE.test(name)
       ? // dynamic [name]
         { name: name.slice(1, -1), dynamic: true }
       : // static name
@@ -10737,7 +10737,7 @@
           // v-bind
           name = name.replace(bindRE, '');
           value = parseFilters(value);
-          isDynamic = dynamicArgRE.test(name);
+          isDynamic = dynamicomponentgRE.test(name);
           if (isDynamic) {
             name = name.slice(1, -1);
           }
@@ -10808,7 +10808,7 @@
         } else if (onRE.test(name)) {
           // v-on
           name = name.replace(onRE, '');
-          isDynamic = dynamicArgRE.test(name);
+          isDynamic = dynamicomponentgRE.test(name);
           if (isDynamic) {
             name = name.slice(1, -1);
           }
@@ -10831,7 +10831,7 @@
           isDynamic = false;
           if (arg) {
             name = name.slice(0, -(arg.length + 1));
-            if (dynamicArgRE.test(arg)) {
+            if (dynamicomponentgRE.test(arg)) {
               arg = arg.slice(1, -1);
               isDynamic = true;
             }
@@ -11765,7 +11765,7 @@
               JSON.stringify(dir.value)
             : '') +
           (dir.arg
-            ? ',arg:' + (dir.isDynamicArg ? dir.arg : '"' + dir.arg + '"')
+            ? ',arg:' + (dir.isDynamicomponentg ? dir.arg : '"' + dir.arg + '"')
             : '') +
           (dir.modifiers ? ',modifiers:' + JSON.stringify(dir.modifiers) : '') +
           '},';
@@ -12620,7 +12620,7 @@
   };
 
   /**
-   * Get outerHTML of elements, taking care
+   * Get outerHTML of elements, taking componente
    * of SVG elements in IE as well.
    */
   function getOuterHTML(el) {

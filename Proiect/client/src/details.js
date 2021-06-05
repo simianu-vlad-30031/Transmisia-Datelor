@@ -3,7 +3,7 @@ function run() {
       el: '#details',
       data: {
         id: 'default',
-        car: {}
+        component: {}
       },
       created: function () {
 
@@ -11,9 +11,9 @@ function run() {
         let params = new URLSearchParams(uri);
         this.id = params.get("id");
 
-        axios.get('http://localhost:3000/cars/'+this.id).then(
+        axios.get('http://localhost:3000/components/'+this.id).then(
             (response) => {
-                this.car = response.data;
+                this.component = response.data;
             }
         );
       },

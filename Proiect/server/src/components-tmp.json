@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "Type":"Graphics Card",
+        "Type":"Graphics componentd",
         "name": "Palit GeForce RTX 3070",
         "Series": "GeForce RTX 3000",
         "Graphic processor": "Ampere GA104",
@@ -15,7 +15,7 @@
     {
         "id": 2,
         "name": "GIGABYTE GeForce RTX 2060",
-        "Type":"Graphics Card",
+        "Type":"Graphics componentd",
         "Series": "GeForce RTX 2000",
         "Graphic processor": "Turing TU106",
         "Gpu clock": "1365MHz",
@@ -28,7 +28,7 @@
     {
         "id": 3,
         "name": "Sapphire Radeon RX 6900",
-        "Type":"Graphics Card",
+        "Type":"Graphics componentd",
         "Series": "Radeon RX 6000",
         "Graphic processor": "Navi 21",
         "Gpu clock": "2050MHz",

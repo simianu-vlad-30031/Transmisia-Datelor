@@ -70,4 +70,9 @@ body {
 .delete-btn:hover {
   background-color: brown;
 
-} 
+}
+
+a {
+  color: blue;
+  font-weight: bolder;
+}

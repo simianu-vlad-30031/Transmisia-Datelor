@@ -4,7 +4,7 @@ function run() {
       data: {
         id: '',
         message: '',
-        car: {}
+        component: {}
       },
       created: function () {
 
@@ -12,17 +12,17 @@ function run() {
         let params = new URLSearchParams(uri);
         this.id = params.get("id");
 
-        axios.get('http://localhost:3000/cars/'+this.id).then(
+        axios.get('http://localhost:3000/components/'+this.id).then(
             (response) => {
-                this.car = response.data;
+                this.component = response.data;
             }
         );
       },
       methods: {
         update: function(){
-            console.dir(this.car);
+            console.dir(this.component);
 
-            return axios.post('http://localhost:3000/cars', this.car).then(
+            return axios.post('http://localhost:3000/components', this.component).then(
                 (response) => {
                     this.message = response.data; // saved
                 }

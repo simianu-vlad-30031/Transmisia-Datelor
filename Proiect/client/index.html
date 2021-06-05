@@ -19,21 +19,21 @@
 
     <div class="title">PC Heaven</div>
 
-    <p style="text-align: center" v-if="cars.length == 0">No components found</p>
+    <p style="text-align: center" v-if="components.length == 0">No components found</p>
 
-    <ul class="user-list" v-if="cars.length > 0">
+    <ul class="user-list" v-if="components.length > 0">
       <li>
         <div class="user-row-header">
           <div class="user-name">Product</div>
         </div>
       </li>
 
-      <li v-for="car in cars">
+      <li v-for="component in components">
         <div class="user-row">
-          <a :href="'details.html?id='+car.id">{{ car.name }}</a>
-          <div class=""><i>{{ car.price }}</i></div>
-          <button v-on:click="deleteCar(car.id)">Delete</button>
-          <a :href="'update.html?id='+car.id" target="_self">Update</a>
+          <a :href="'details.html?id='+component.id">{{ component.name }}</a>
+          <div class=""><i>{{ component.price }}</i></div>
+          <button v-on:click="deletecomponent(component.id)">Delete</button>
+          <a :href="'update.html?id='+component.id" target="_self">Update</a>
         </div>
       </li>
     </ul>
